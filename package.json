@@ -1,6 +1,6 @@
 {
   "name": "angular-webpack-remove-di-loaders",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Remove DI for angular, support ES6 modules",
   "main": "index.js",
   "scripts": {

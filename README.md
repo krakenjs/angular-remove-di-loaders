@@ -61,6 +61,8 @@ export function someUtil() {
 }
 ```
 
+Disclaimer: is this a hack? Yes, we're bending angular in some weird directions. But, it makes for much more sane and easier to reason about application code -- and we're running it in production with no problems at all. That said, use at your own risk.
+
 ## Usage
 
 #### 1. Make sure you're using webpack. Babel and ES6 is recommended, but it should probably also work (at your own peril) with commonjs.

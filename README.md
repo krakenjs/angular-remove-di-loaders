@@ -63,9 +63,9 @@ export function someUtil() {
 
 ## Usage
 
-- Make sure you're using webpack. Babel and ES6 is recommended, but it should probably also work (at your own peril) with commonjs.
+#### 1. Make sure you're using webpack. Babel and ES6 is recommended, but it should probably also work (at your own peril) with commonjs.
 
-- Add the following webpack config:
+#### 2. Add the following webpack config:
 
 ```javascript
 
@@ -104,12 +104,11 @@ loaders: [
 ]
 ```
 
-- Make sure you bootstrap angular before any of your app code is imported!
+#### 3. Make sure you bootstrap angular before any of your app code is imported!
 
 This works best if you have a `bootstrap.js` like the following:
 
 ```javascript:
-
 require('angular')
 require('angular-ui-router')
 
@@ -118,21 +117,25 @@ angular.bootstrap(document.body, ['app']);
 require('./app.js');
 ```
 
-Note we're using `require()` here so the order of our requires is not changes by the ES6 compiler.
-
-- You're good to go!
+#### 4. You're good to go!
 
 ## Writing code
 
-- Any of your ES6 exports will be usable as angular factories:
+All of angular's providers can be imported directly from angular:
 
-#### foo.js
+```javascript
+import { $q, $http, $timeout } from 'angular';
+```
+
+Any of your ES6 exports will be usable as angular factories:
+
+##### foo.js
 
 ```javascript
 export var $foo = 'bar';
 ```
 
-#### bar.js
+##### bar.js
 
 ```javascript
 import './foo';
@@ -142,9 +145,9 @@ angular.module().factory('$bar', function($foo) {
 });
 ```
 
-- Any any of your angular factories will be usable as ES6 imports:
+And any any of your angular factories will be usable as ES6 imports:
 
-#### bar.js
+##### bar.js
 
 ```javascript
 angular.module().factory('$bar', function() {
@@ -152,12 +155,12 @@ angular.module().factory('$bar', function() {
 });
 ```
 
-#### foo.js
+##### foo.js
 
 ```javascript
 import { $bar } from './bar';
 ```
 
-This way, you can incrementally remove all angular modules, and transition to pure unbridled ES6 joy.
+This way, you can incrementally remove angular modules, and transition to pure unbridled ES6 joy without having to re-write your whole app from scratch.
 
 Enjoy!

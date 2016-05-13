@@ -140,7 +140,7 @@ export var $foo = 'bar';
 ```javascript
 import './foo';
 
-angular.module().factory('$bar', function($foo) {
+angular.module().factory('$foo', function($foo) {
     ...
 });
 ```

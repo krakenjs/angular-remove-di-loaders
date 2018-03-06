@@ -32,7 +32,7 @@ module.exports = function (content) {
 
     // Do we have any ES6 imports?
 
-    var registersES6Exports = content.match(/export (var|let|function|constant|class) \$\w+/);
+    var registersES6Exports = content.match(/export (var|let|function|const|class) \$\w+/);
 
     if (registersAngularProviders && registersES6Exports) {
         throw new Error('Can not register ES6 exports and angular providers in the same module. If in doubt, use ES6 exports and angular-es6-interop will auto-generate angular providers for you.');
@@ -50,7 +50,7 @@ module.exports = function (content) {
 
         // Find all of the exports
 
-        var exp = util.findAll('export\\s+(?:var|let|function|constant|class)\\s+([a-zA-Z0-9\\$_]+)', content);
+        var exp = util.findAll('export\\s+(?:var|let|function|const|class)\\s+([a-zA-Z0-9\\$_]+)', content);
 
         // Map them to angular providers using our angular.provider shorthand
 

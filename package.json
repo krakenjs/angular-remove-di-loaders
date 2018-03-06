@@ -1,6 +1,6 @@
 {
   "name": "angular-remove-di-loaders",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Remove DI for angular, support ES6 modules",
   "scripts": {
     "test": "eslint ."

@@ -150,7 +150,7 @@ function removeAngularDI(angular) {
 
     function registerLazyProviderRegistrars(angular, monolith) {
 
-        monolith.config(function($injector) {
+        monolith.config(['$injector', function($injector) {
 
             // Save a reference to the config-time $injector, which is different to the run-time $injector in weird and mysterious ways
 
@@ -175,14 +175,14 @@ function removeAngularDI(angular) {
                     return this;
                 }
             });
-        });
+        }]);
 
-        monolith.run(function($injector) {
+        monolith.run(['$injector', function($injector) {
 
             // Save a reference to the run-time $injector for later (could be useful right?)
 
             monolith.injector = monolith.runInjector = $injector;
-        });
+        }]);
     }
 
 
@@ -296,7 +296,7 @@ function removeAngularDI(angular) {
     function registerLazyProviders(angular, monolith) {
         LAZY_PROVIDERS.forEach(function(providerName) {
 
-            monolith.factory(providerName, function($injector) {
+            monolith.factory(providerName, ['$injector', function($injector) {
                 return function() {
 
                     var provider;
@@ -325,7 +325,7 @@ function removeAngularDI(angular) {
 
                     return provider.apply(this, arguments);
                 }
-            });
+            }]);
         });
     }
 
